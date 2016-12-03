@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" method="upgrade" client="site">
+	<name>MOD_ARTICLES_FAQ</name>
+	<creationDate>Dec 2016</creationDate>
+	<author>Sergio Iglesias</author>
+	<authorEmail>info@sergioiglesias.net</authorEmail>
+	<authorUrl>https://sergioiglesias.net</authorUrl>
+	<copyright>Copyright © 2016 - All rights reserved.</copyright>
+	<license>GNU General Public License v2.0</license>
+	<version>1.0.0</version>
+	<description>MOD__P_JOOMLA__ARTICLES_IN_BOOTS</description>
+	<files>
+		<filename module="mod_articles_faq">mod_articles_faq.php</filename>
+		<filename>mod_articles_faq.xml</filename>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<folder>language</folder>
+		<folder>tmpl</folder>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="catid"
+					type="category"
+					label="JCATEGORY"
+					description="MOD_ARTICLES_FAQ_FIELD_CATEGORY_DESC"
+					extension="com_content"
+					multiple="true"
+					size="10"
+					default=""
+					>
+					<option value="">JOPTION_ALL_CATEGORIES</option>
+				</field>
+
+				<field
+					name="count"
+					type="text"
+					label="MOD_ARTICLES_FAQ_FIELD_COUNT_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_COUNT_DESC"
+				/>
+
+				<field
+					name="templateframework"
+					type="list"
+					label="MOD_ARTICLES_FAQ_FIELD_TEMPLATE_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_TEMPLATE_DESC"
+					default="1"
+					>
+					<option value="1">Bootstrap 2.3.2</option>
+					<option value="2">Bootstrap 3</option>
+					<option value="3">UiKit</option>
+				</field>
+				<field
+					name="script"
+					type="radio"
+					label="MOD_ARTICLES_FAQ_FIELD_SCRIPT_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_SCRIPT_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					showon="templateframework:3"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+			</fieldset>
+			
+			<fieldset name="configuration">
+				<field
+					name="show_content"
+					type="list"
+					label="MOD_ARTICLES_FAQ_FIELD_CONTENT_SELECTION_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_CONTENT_SELECTION_DESC"
+					default="introc"
+					>
+					<option value="introc">MOD_ARTICLES_FAQ_OPTION_INTROC_VALUE</option>
+					<option value="fullc">MOD_ARTICLES_FAQ_OPTION_FULLC_VALUE</option>
+					<option value="partc">MOD_ARTICLES_FAQ_OPTION_PARTC_VALUE</option>
+				</field>
+				<field
+					name="tam_content"
+					type="text"
+					default="200"
+					label="MOD_ARTICLES_FAQ_FIELD_CONTENT_TAM_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_CONTENT_TAM_DESC"
+					showon="show_content:partc"
+				/>
+
+				<field
+					name="basicspacer2"
+					type="spacer"
+					hr="true"
+				/>
+
+				<field
+					name="show_image"
+					type="list"
+					label="MOD_ARTICLES_FAQ_FIELD_IMAGE_SELECTION_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_IMAGE_SELECTION_DESC"
+					default="off"
+					>
+					<option value="off">MOD_ARTICLES_FAQ_OPTION_OFF_VALUE</option>
+					<option value="intro">MOD_ARTICLES_FAQ_OPTION_INTRO_VALUE</option>
+					<option value="fulltext">MOD_ARTICLES_FAQ_OPTION_FULLTEXT_VALUE</option>
+				</field>
+
+				<field
+					name="link_image"
+					type="radio"
+					label="MOD_ARTICLES_FAQ_FIELD_LINK_IMAGE_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_LINK_IMAGE_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					showon="show_image:intro,fulltext"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field
+					name="float_image"
+					type="list"
+					label="MOD_ARTICLES_FAQ_FIELD_FLOAT_IMAGE_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_FLOAT_IMAGE_DESC"
+					default="0"
+					showon="show_image:intro,fulltext"
+					>
+					<option value="0">JNO</option>
+					<option value="left">MOD_ARTICLES_FAQ_FIELD_FLOAT_LEFT</option>
+					<option value="right">MOD_ARTICLES_FAQ_FIELD_FLOAT_RIGHT</option>
+				</field>
+
+				<field
+					name="tam_image"
+					type="text"
+					default=""
+					label="MOD_ARTICLES_FAQ_FIELD_TAM_IMAGE_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_TAM_IMAGE_DESC"
+					showon="show_image:intro,fulltext"
+				/>
+
+				<field
+					name="padding_image"
+					type="text"
+					default=""
+					label="MOD_ARTICLES_FAQ_FIELD_PADDING_IMAGE_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_PADDING_IMAGE_DESC"
+					showon="show_image:intro,fulltext"
+				/>
+
+				<field
+					name="basicspacer3"
+					type="spacer"
+					hr="true"
+				/>
+
+				<field
+					name="show_readmore"
+					type="radio"
+					label="MOD_ARTICLES_FAQ_FIELD_READMORE_SELECTION_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_READMORE_SELECTION_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field
+					name="readmore_text"
+					type="text"
+					default=""
+					label="MOD_ARTICLES_FAQ_FIELD_READMORE_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_READMORE_DESC"
+					showon="show_readmore:1"
+				/>
+			</fieldset>
+
+			<fieldset
+				name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+
+				<field
+					name="moduleclass_sfx"
+					type="textarea" rows="3"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+
+				<field
+					name="cache"
+					type="list"
+					default="1"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC">
+					<option
+						value="1">JGLOBAL_USE_GLOBAL</option>
+					<option
+						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field
+					name="cache_time"
+					type="text"
+					default="900"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+				<field
+					name="cachemode"
+					type="hidden"
+					default="static">
+					<option
+						value="static"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config> 
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.mod_articles_faq.sys.ini</language>
+		<language tag="en-GB">en-GB/en-GB.mod_articles_faq.ini</language>
+		<language tag="es-ES">es-ES/es-ES.mod_articles_faq.sys.ini</language>
+		<language tag="es-ES">es-ES/es-ES.mod_articles_faq.ini</language>
+	</languages>
+</extension>
