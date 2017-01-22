@@ -7,7 +7,7 @@
 	<authorUrl>https://sergioiglesias.net</authorUrl>
 	<copyright>Copyright © 2016 - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
-	<version>1.0.0</version>
+	<version>1.1.0</version>
 	<description>MOD__P_JOOMLA__ARTICLES_IN_BOOTS</description>
 	<files>
 		<filename module="mod_articles_faq">mod_articles_faq.php</filename>
@@ -224,4 +224,7 @@
 		<language tag="es-ES">es-ES/es-ES.mod_articles_faq.sys.ini</language>
 		<language tag="es-ES">es-ES/es-ES.mod_articles_faq.ini</language>
 	</languages>
+	<updateservers>
+		<server type="extension" name="Articles FAQ">https://sergiois.github.io/articles-faq.xml</server>
+	</updateservers>
 </extension>
