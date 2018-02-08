@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Site
- * @subpackage  mod_articles_faq
+ * @subpackage  mod_articles_thumbnails
  *
  * @copyright	Copyright © 2016 - All rights reserved.
  * @license		GNU General Public License v2.0
@@ -14,8 +14,8 @@ defined('_JEXEC') or die;
 JLoader::register('ContentHelperRoute', JPATH_SITE . '/components/com_content/helpers/route.php');
 JModelLegacy::addIncludePath(JPATH_SITE . '/components/com_content/models', 'ContentModel');
 
-class modarticlesfaqHelper {
-    function getItems($params){
+class modarticlesthumbnailsHelper {
+    static function getItems($params){
 		// Get an instance of the generic articles model
 		$model     = JModelLegacy::getInstance('Articles', 'ContentModel', array('ignore_request' => true));
 		
@@ -26,7 +26,7 @@ class modarticlesfaqHelper {
 
 		// Set the filters based on the module params
 		$model->setState('list.start', 0);
-		$model->setState('list.limit', (int) $params->get('count'));
+		$model->setState('list.limit', (int) $params->get('count', 3));
 		$model->setState('filter.published', 1);
 		$model->setState('filter.featured', $params->get('show_front', 1) == 1 ? 'show' : 'hide');
 
@@ -42,11 +42,17 @@ class modarticlesfaqHelper {
 		$model->setState('filter.language', $app->getLanguageFilter());
 
 		// Ordering
-		$model->setState('list.ordering', 'a.publish_up');
-		$model->setState('list.direction', 'DESC');
+		if($params->get('ordering') == 'random')
+        {
+            $model->setState('list.ordering', JFactory::getDbo()->getQuery(true)->Rand());
+        }
+        else
+        {
+            $model->setState('list.ordering', 'a.'.$params->get('ordering', 'publish_up'));
+            $model->setState('list.direction', $params->get('direction', 'DESC'));
+        }
 
 		$items = $model->getItems();
-
 		foreach ($items as &$item)
 		{
 			$item->slug    = $item->id . ':' . $item->alias;

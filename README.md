@@ -10,3 +10,4 @@ Articles FAQ Module show articles of Joomla in accordion format. You can configu
 * Show or hide image of articles and if you want it to have a link.
 * Image style configuration: float, width and padding.
 * Show or hide button of "Read more" and the text of de button.
+* Ordering articles by Pubish date, Title, Hits or Randomly.
