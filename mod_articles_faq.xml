@@ -7,7 +7,7 @@
 	<authorUrl>https://sergioiglesias.net</authorUrl>
 	<copyright>Copyright © 2016 - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
-	<version>1.2.1</version>
+	<version>1.2.2</version>
 	<description>MOD__P_JOOMLA__ARTICLES_IN_BOOTS</description>
 	<files>
 		<filename module="mod_articles_faq">mod_articles_faq.php</filename>
@@ -77,6 +77,7 @@
 					<option value="title">MOD_ARTICLES_FAQ_OPTION_TITLE_VALUE</option>
 					<option value="hits">MOD_ARTICLES_FAQ_OPTION_HITS_VALUE</option>
 					<option value="random">MOD_ARTICLES_FAQ_OPTION_RAMDOM_VALUE</option>
+					<option value="ordering">MOD_ARTICLES_FAQ_OPTION_ORDER_VALUE</option>
 				</field>
 				<field
 					name="direction"
