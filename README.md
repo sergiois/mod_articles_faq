@@ -22,6 +22,9 @@ Joomla! Articles in Bootstrap accordion format
 ### Version 1.2.2 [2019-01-03]
 * **[Added]** Sort articles by Order of articles.
 
+### Version 1.2.3 [2019-02-04]
+* **[Added]** Open article by URL (domain.com/articles-faq?faq=ID-ARTICLE)
+
 * * *
 
 ## Copyright & License

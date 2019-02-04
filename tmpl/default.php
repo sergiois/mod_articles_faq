@@ -10,6 +10,19 @@
  
 defined('_JEXEC') or die;
 
+$jinput = JFactory::getApplication()->input;
+$doc = JFactory::getDocument();
+
+if($jinput->get('faq'))
+{
+    $js = "
+    jQuery(document).ready(function(){
+        jQuery('#collapse".$jinput->get('faq')."').collapse('toggle');
+    });
+    ";
+    $doc->addScriptDeclaration($js);
+}
+
 $style = '';
 if($params->get('float_image'))
 {
