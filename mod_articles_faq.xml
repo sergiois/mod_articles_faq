@@ -102,6 +102,18 @@
 				</field>
 
 				<field
+					name="show_search"
+					type="radio"
+					label="MOD_ARTICLES_FAQ_FIELD_SEARCH_SELECTION_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_SEARCH_SELECTION_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				
+				<field
 					name="basicspacerorder"
 					type="spacer"
 					hr="true"
