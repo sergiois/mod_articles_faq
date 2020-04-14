@@ -37,8 +37,25 @@ if($params->get('padding_image'))
     $style .= 'padding:'.$params->get('padding_image').'; ';
 }
 ?>
+<?php
+if($params->get('show_search') == true) { ?>
+    <form action="" method=""  >
+
+        <input type="text" name="search" placeholder="doorzoek FAQ" />
+        <input type="hidden" name="submit" value="Zoeken" />
+    </form>
+<?php } ?>
 <div class="accordion <?php echo $moduleclass_sfx; ?>" id="accordion<?php echo $module->id; ?>">
 <?php foreach ($items as $item) : ?>
+	<?php
+        // create text to search trough
+	$Text = $item->title . ' ' . $item->introtext . ' ' .$item->fulltext;
+	// get the search from the url if exist
+	$search= $_GET["search"];
+
+	If  (strpos($Text,$search) ==true || empty($search) ) {
+		 
+	?>	
 	<div class="accordion-group">
         <div class="accordion-heading">
             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion<?php echo $module->id; ?>" href="#collapse<?php echo $item->id; ?>">
@@ -97,5 +114,5 @@ if($params->get('padding_image'))
             </div>
         </div>
 	</div>
-<?php endforeach; ?>
+<?php } endforeach; ?>
 </div>
