@@ -37,6 +37,9 @@ class modarticlesfaqHelper {
 
 		// Category filter
 		$model->setState('filter.category_id', $params->get('catid', array()));
+	    
+	    	// Filer by tag
+		$model->setState('filter.tag', $params->get('tag', array()));
 		
 		// Filter by language
 		$model->setState('filter.language', $app->getLanguageFilter());
