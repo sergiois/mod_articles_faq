@@ -7,10 +7,14 @@
  * @license		GNU General Public License v2.0
  * @author 		Sergio Iglesias (@sergiois)
  */
- 
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Uri\Uri;
+
 defined('_JEXEC') or die;
 
-$doc = JFactory::getDocument();
+$doc = Factory::getDocument();
 $doc->addScript('https://getuikit.com/src/js/components/accordion.js');
 
 $style = '';
@@ -26,9 +30,32 @@ if($params->get('padding_image'))
 {
     $style .= 'padding:'.$params->get('padding_image').'; ';
 }
+
+$jinput = Factory::getApplication()->input;
 ?>
+<?php if($params->get('show_search') == true) { ?>
+    <form action="<?php echo Uri::current(); ?>" method="get" class="uk-form">
+        <div class="uk-inline">
+            <input type="text" name="search" placeholder="<?php echo Text::_('MOD_ARTICLES_FAQ_PLACEHOLDER_SEARCH_TEXT'); ?>">
+            <?php if($params->get('show_button_search') == true) { ?>
+            <button type="submit" class="uk-button"><?php echo Text::_('MOD_ARTICLES_FAQ_BUTTON_SEARCH_TEXT'); ?></button>
+            <?php } ?>
+        </div>
+    </form>
+    <hr>
+<?php } ?>
 <div class="uk-accordion" data-uk-accordion>
 <?php foreach ($items as $item) : ?>
+    <?php
+    $text = $item->title . ' ' . $item->introtext . ' ' .$item->fulltext;
+    $search = ($jinput->get("search")) ? $jinput->get("search") : '';
+    $result = false;
+    if(!empty($search))
+    {
+        $result = strpos($text,$search);
+    }
+	if($result || empty($search)) {
+    ?>
 	<h3 class="uk-accordion-title"><?php echo $item->title; ?></h3>
     <div class="uk-accordion-content">
         <?php if($params->get('show_image') != 'off'): ?>
@@ -75,11 +102,11 @@ if($params->get('padding_image'))
         
         <?php if($params->get('show_readmore')): ?>
         <p class="text-right">
-            <a href="<?php echo $item->link; ?>" class="uk-button uk-button-primary"><?php echo $params->get('readmore_text') ? $params->get('readmore_text') : JText::_('MOD_ARTICLES_FAQ_FIELD_READMORE_TEXT'); ?></a>
+            <a href="<?php echo $item->link; ?>" class="uk-button uk-button-primary"><?php echo $params->get('readmore_text') ? $params->get('readmore_text') : Text::_('MOD_ARTICLES_FAQ_FIELD_READMORE_TEXT'); ?></a>
         </p>
         <?php endif; ?>
 	</div>
-<?php endforeach; ?>
+<?php } endforeach; ?>
 </div>
 
 <?php if($params->get('script')): ?>

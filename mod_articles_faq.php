@@ -7,6 +7,9 @@
  * @license		GNU General Public License v2.0
  * @author 		Sergio Iglesias (@sergiois)
  */
+
+use Joomla\CMS\Helper\ModuleHelper;
+
 defined('_JEXEC') or die;
 
 require_once dirname(__FILE__) . '/helper.php';
@@ -20,4 +23,4 @@ switch((int)$params->get('templateframework', 1))
     case 3: $layout .= '_uikit'; break;
 }
 
-require JModuleHelper::getLayoutPath('mod_articles_faq', $layout);
+require ModuleHelper::getLayoutPath('mod_articles_faq', $layout);

@@ -7,7 +7,11 @@
  * @license		GNU General Public License v2.0
  * @author 		Sergio Iglesias (@sergiois)
  */
- 
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Uri\Uri;
+
 defined('_JEXEC') or die;
 
 $jinput = JFactory::getApplication()->input;
@@ -36,26 +40,30 @@ if($params->get('padding_image'))
 {
     $style .= 'padding:'.$params->get('padding_image').'; ';
 }
-?>
-<?php
-if($params->get('show_search') == true) { ?>
-    <form action="" method=""  >
 
-        <input type="text" name="search" placeholder="doorzoek FAQ" />
-        <input type="hidden" name="submit" value="Zoeken" />
+$jinput = Factory::getApplication()->input;
+?>
+<?php if($params->get('show_search') == true) { ?>
+    <form action="<?php echo Uri::current(); ?>" method="get" class="form-search">
+        <input type="text" class="input-medium search-query" name="search" placeholder="<?php echo Text::_('MOD_ARTICLES_FAQ_PLACEHOLDER_SEARCH_TEXT'); ?>">
+        <?php if($params->get('show_button_search') == true) { ?>
+        <button type="submit" class="btn"><?php echo Text::_('MOD_ARTICLES_FAQ_BUTTON_SEARCH_TEXT'); ?></button>
+        <?php } ?>
     </form>
+    <hr>
 <?php } ?>
 <div class="accordion <?php echo $moduleclass_sfx; ?>" id="accordion<?php echo $module->id; ?>">
 <?php foreach ($items as $item) : ?>
-	<?php
-        // create text to search trough
-	$Text = $item->title . ' ' . $item->introtext . ' ' .$item->fulltext;
-	// get the search from the url if exist
-	$search= $_GET["search"];
-
-	If  (strpos($Text,$search) ==true || empty($search) ) {
-		 
-	?>	
+    <?php
+    $text = $item->title . ' ' . $item->introtext . ' ' .$item->fulltext;
+    $search = ($jinput->get("search")) ? $jinput->get("search") : '';
+	$result = false;
+    if(!empty($search))
+    {
+        $result = strpos($text,$search);
+    }
+	if($result || empty($search)) {
+    ?>
 	<div class="accordion-group">
         <div class="accordion-heading">
             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion<?php echo $module->id; ?>" href="#collapse<?php echo $item->id; ?>">

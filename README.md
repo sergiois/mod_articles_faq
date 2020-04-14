@@ -25,6 +25,10 @@ Joomla! Articles in Bootstrap accordion format
 ### Version 1.2.3 [2019-02-04]
 * **[Added]** Open article by URL (domain.com/articles-faq?faq=ID-ARTICLE)
 
+### Version 1.3.0 [2020-04-14]
+* **[Added]** Select Articles from a specific Tag or a set of Tags
+* **[Added]** Search option
+
 * * *
 
 ## Copyright & License
