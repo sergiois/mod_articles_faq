@@ -120,10 +120,17 @@ $jinput = Factory::getApplication()->input;
                     <p><?php echo $introtext; ?></p>
                 <?php endif; ?>
                 
-                <?php if($params->get('show_readmore')): ?>
-                <p class="text-right">
-                    <a href="<?php echo $item->link; ?>" class="btn btn-primary"><?php echo $params->get('readmore_text') ? $params->get('readmore_text') : Text::_('MOD_ARTICLES_FAQ_FIELD_READMORE_TEXT'); ?></a>
-                </p>
+              <?php if($params->get('show_readmore')): ?>
+                    <p class="text-right"> 
+                        <?php if($params->get('readmore_new_window')== false): ?>
+                    
+                        <a href="<?php echo $item->link; ?>" class="btn btn-primary"><?php echo $params->get('readmore_text') ? $params->get('readmore_text') : Text::_('MOD_ARTICLES_FAQ_FIELD_READMORE_TEXT'); ?></a>
+                    
+                        <?php else: ?>
+                        <a href="<?php echo $item->link; ?>" class="btn btn-primary"  target="_blank"><?php echo $params->get('readmore_text') ? $params->get('readmore_text') : Text::_('MOD_ARTICLES_FAQ_FIELD_READMORE_TEXT'); ?></a>
+                    
+                        <?php endif; ?>
+                    </p> 
                 <?php endif; ?>
             </div>
         </div>
