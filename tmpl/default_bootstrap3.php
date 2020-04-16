@@ -9,6 +9,7 @@
  */
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Uri\Uri;
 
@@ -120,20 +121,16 @@ $jinput = Factory::getApplication()->input;
                     <p><?php echo $introtext; ?></p>
                 <?php endif; ?>
                 
-              <?php if($params->get('show_readmore')): ?>
-                    <p class="text-right"> 
-                        <?php if($params->get('readmore_behaviour')== 0): ?>
-                    
+                <?php if($params->get('show_readmore')): ?>
+                    <p class="text-right">
+                    <?php if($params->get('readmore_behaviour')== 0): ?>
                         <a href="<?php echo $item->link; ?>" class="btn btn-primary" ><?php echo $params->get('readmore_text') ? $params->get('readmore_text') : Text::_('MOD_ARTICLES_FAQ_FIELD_READMORE_TEXT'); ?></a>
-                    
-                        <?php elseif($params->get('readmore_behaviour')== 1): ?>
+                    <?php elseif($params->get('readmore_behaviour')== 1): ?>
                         <a href="<?php echo $item->link; ?>" class="btn btn-primary"  target="_blank"><?php echo $params->get('readmore_text') ? $params->get('readmore_text') : Text::_('MOD_ARTICLES_FAQ_FIELD_READMORE_TEXT'); ?></a>
-
-                        <?php else: ?>
-			    <?php JHTML::_('behavior.modal'); ?>
-                        <a href="<?php echo $item->link; ?>?tmpl=component" class="btn btn-primary modal"  class="modal" rel="{handler: 'iframe', size: {x: <?php echo $params->get('readmore_modal_width') ?>, y: <?php echo $params->get('readmore_modal_height')?>}}"><?php echo $params->get('readmore_text') ? $params->get('readmore_text') : Text::_('MOD_ARTICLES_FAQ_FIELD_READMORE_TEXT'); ?></a>
-                            
-                        <?php endif; ?>
+                    <?php else: ?>
+                        <?php HTMLHelper::_('behavior.modal'); ?>
+                        <a href="<?php echo $item->link; ?>?tmpl=component" class="btn btn-primary modal" rel="{handler: 'iframe', size: {x: <?php echo $params->get('readmore_modal_width') ?>, y: <?php echo $params->get('readmore_modal_height')?>}}"><?php echo $params->get('readmore_text') ? $params->get('readmore_text') : Text::_('MOD_ARTICLES_FAQ_FIELD_READMORE_TEXT'); ?></a>
+                    <?php endif; ?>
                     </p> 
                 <?php endif; ?>
             </div>

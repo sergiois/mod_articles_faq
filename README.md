@@ -14,6 +14,7 @@ Joomla! Articles in Bootstrap accordion format
     * Show or hide button of "Read more" and the text of de button.
     * Sort articles by Pubish date, Title, Hits or Randomly.
     * Sort articles by Order of articles.
+    * Open article in modal option (popup) and new window
 
 * * *
 
@@ -28,6 +29,9 @@ Joomla! Articles in Bootstrap accordion format
 ### Version 1.3.0 [2020-04-14]
 * **[Added]** Select Articles from a specific Tag or a set of Tags
 * **[Added]** Search option
+
+### Version 1.3.1 [2020-04-16]
+* **[Added]** Open article in modal option (popup) and new window
 
 * * *
 
