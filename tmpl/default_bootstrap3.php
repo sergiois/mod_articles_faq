@@ -7,11 +7,15 @@
  * @license		GNU General Public License v2.0
  * @author 		Sergio Iglesias (@sergiois)
  */
- 
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Uri\Uri;
+
 defined('_JEXEC') or die;
 
-$jinput = JFactory::getApplication()->input;
-$doc = JFactory::getDocument();
+$jinput = Factory::getApplication()->input;
+$doc = Factory::getDocument();
 
 if($jinput->get('faq'))
 {
@@ -36,9 +40,34 @@ if($params->get('padding_image'))
 {
     $style .= 'padding:'.$params->get('padding_image').'; ';
 }
+
+$jinput = Factory::getApplication()->input;
 ?>
+<?php if($params->get('show_search') == true) { ?>
+    <form action="<?php echo Uri::current(); ?>" method="get">
+        <div class="input-group">
+            <input type="text" class="form-control" name="search" placeholder="<?php echo Text::_('MOD_ARTICLES_FAQ_PLACEHOLDER_SEARCH_TEXT'); ?>">
+            <?php if($params->get('show_button_search') == true) { ?>
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><?php echo Text::_('MOD_ARTICLES_FAQ_BUTTON_SEARCH_TEXT'); ?></button>
+            </span>
+            <?php } ?>
+        </div>
+    </form>
+    <hr>
+<?php } ?>
 <div class="panel-group" id="accordion<?php echo $module->id; ?>" role="tablist" aria-multiselectable="true">
 <?php foreach ($items as $item) : ?>
+    <?php
+    $text = $item->title . ' ' . $item->introtext . ' ' .$item->fulltext;
+    $search = ($jinput->get("search")) ? $jinput->get("search") : '';
+	$result = false;
+    if(!empty($search))
+    {
+        $result = strpos($text,$search);
+    }
+	if($result || empty($search)) {
+    ?>
 	<div class="panel panel-default">
         <div class="panel-heading" role="tab" id="heading<?php echo $item->id; ?>">
             <h4 class="panel-title">
@@ -93,11 +122,11 @@ if($params->get('padding_image'))
                 
                 <?php if($params->get('show_readmore')): ?>
                 <p class="text-right">
-                    <a href="<?php echo $item->link; ?>" class="btn btn-primary"><?php echo $params->get('readmore_text') ? $params->get('readmore_text') : JText::_('MOD_ARTICLES_FAQ_FIELD_READMORE_TEXT'); ?></a>
+                    <a href="<?php echo $item->link; ?>" class="btn btn-primary"><?php echo $params->get('readmore_text') ? $params->get('readmore_text') : Text::_('MOD_ARTICLES_FAQ_FIELD_READMORE_TEXT'); ?></a>
                 </p>
                 <?php endif; ?>
             </div>
         </div>
 	</div>
-<?php endforeach; ?>
+<?php } endforeach; ?>
 </div>

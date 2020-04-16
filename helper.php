@@ -26,7 +26,7 @@ class modarticlesfaqHelper {
 
 		// Set the filters based on the module params
 		$model->setState('list.start', 0);
-		$model->setState('list.limit', (int) $params->get('count', 3));
+		$model->setState('list.limit', (int) $params->get('count'));
 		$model->setState('filter.published', 1);
 		$model->setState('filter.featured', $params->get('show_front', 1) == 1 ? 'show' : 'hide');
 
@@ -37,6 +37,9 @@ class modarticlesfaqHelper {
 
 		// Category filter
 		$model->setState('filter.category_id', $params->get('catid', array()));
+
+		// Filer by tag
+		$model->setState('filter.tag', $params->get('tag', array()));
 		
 		// Filter by language
 		$model->setState('filter.language', $app->getLanguageFilter());

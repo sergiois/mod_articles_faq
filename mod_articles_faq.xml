@@ -7,7 +7,7 @@
 	<authorUrl>https://sergioiglesias.net</authorUrl>
 	<copyright>Copyright © 2016 - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
-	<version>1.2.3</version>
+	<version>1.3.0</version>
 	<description>MOD__P_JOOMLA__ARTICLES_IN_BOOTS</description>
 	<files>
 		<filename module="mod_articles_faq">mod_articles_faq.php</filename>
@@ -32,6 +32,17 @@
 					>
 					<option value="">JOPTION_ALL_CATEGORIES</option>
 				</field>
+
+				<field
+					name="tag"
+					type="tag"
+					label="JTAG"
+					description="JTAG_DESC"
+					mode="nested"
+					multiple="true"
+					filter="int_array"
+					class="multipleTags"
+				/>
 
 				<field
 					name="count"
@@ -88,6 +99,31 @@
 					>
 					<option value="DESC">MOD_ARTICLES_FAQ_OPTION_DESC_VALUE</option>
 					<option value="ASC">MOD_ARTICLES_FAQ_OPTION_ASC_VALUE</option>
+				</field>
+
+				<field
+					name="show_search"
+					type="radio"
+					label="MOD_ARTICLES_FAQ_FIELD_SEARCH_SELECTION_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_SEARCH_SELECTION_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field
+					name="show_button_search"
+					type="radio"
+					label="MOD_ARTICLES_FAQ_FIELD_BUTTON_SEARCH_SELECTION_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_BUTTON_SEARCH_SELECTION_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					showon="show_search:1"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
 				</field>
 
 				<field
