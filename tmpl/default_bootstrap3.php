@@ -131,13 +131,21 @@ $jinput = Factory::getApplication()->input;
                 
                 <?php if($params->get('show_readmore')): ?>
                     <p class="text-right">
-                    <?php if($params->get('readmore_behaviour')== 0): ?>
+                    <?php if($params->get('readmore_behaviour')== 0): /*Open*/  ?>
                         <a href="<?php echo $item->link; ?>" class="btn btn-primary" ><?php echo $params->get('readmore_text') ? $params->get('readmore_text') : Text::_('MOD_ARTICLES_FAQ_FIELD_READMORE_TEXT'); ?></a>
-                    <?php elseif($params->get('readmore_behaviour')== 1): ?>
+                    <?php elseif($params->get('readmore_behaviour')== 1): /*Open in new windows*/?>
                         <a href="<?php echo $item->link; ?>" class="btn btn-primary"  target="_blank"><?php echo $params->get('readmore_text') ? $params->get('readmore_text') : Text::_('MOD_ARTICLES_FAQ_FIELD_READMORE_TEXT'); ?></a>
-                    <?php else: ?>
+                    <?php else: /*Popup box */ 
+                        /* check if there are other parameters in the url */
+                        if (strpos($item->link,'?') !==false ) {
+                            $tmplcode= '&tmpl=component';
+                        }
+                        else { 
+                            $tmplcode= '?tmpl=component';
+                        } ?>
                         <?php HTMLHelper::_('behavior.modal'); ?>
-                        <a href="<?php echo $item->link; ?>?tmpl=component" class="btn btn-primary modal" rel="{handler: 'iframe', size: {x: <?php echo $params->get('readmore_modal_width') ?>, y: <?php echo $params->get('readmore_modal_height')?>}}"><?php echo $params->get('readmore_text') ? $params->get('readmore_text') : Text::_('MOD_ARTICLES_FAQ_FIELD_READMORE_TEXT'); ?></a>
+                        
+                        <a href="<?php echo $item->link . $tmplcode; ?>" class="btn btn-primary modal" rel="{handler: 'iframe', size: {x: <?php echo $params->get('readmore_modal_width') ?>, y: <?php echo $params->get('readmore_modal_height')?>}}"><?php echo $params->get('readmore_text') ? $params->get('readmore_text') : Text::_('MOD_ARTICLES_FAQ_FIELD_READMORE_TEXT'); ?></a>
                     <?php endif; ?>
                     </p> 
                 <?php endif; ?>
