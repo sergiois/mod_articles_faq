@@ -7,7 +7,7 @@
 	<authorUrl>https://sergioiglesias.net</authorUrl>
 	<copyright>Copyright © 2016 - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
-	<version>1.3.0</version>
+	<version>1.3.1</version>
 	<description>MOD__P_JOOMLA__ARTICLES_IN_BOOTS</description>
 	<files>
 		<filename module="mod_articles_faq">mod_articles_faq.php</filename>
@@ -231,6 +231,38 @@
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
+
+				<field
+					showon="show_readmore:1"
+					name="readmore_behaviour"
+					type="list"
+					label="MOD_ARTICLES_FAQ_FIELD_READMORE_BEHAVIOUR_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_READMORE_BEHAVIOUR_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					>
+					<option value="0">MOD_ARTICLES_FAQ_FIELD_READMORE_VALUE_NORMAL</option>
+					<option value="1">MOD_ARTICLES_FAQ_FIELD_READMORE_VALUE_NEW</option>
+					<option value="2">MOD_ARTICLES_FAQ_FIELD_READMORE_VALUE_MODAL</option>
+				</field>
+
+				<field
+					showon="readmore_behaviour:2"
+					name="readmore_modal_width"
+					type="int"
+					label="MOD_ARTICLES_FAQ_FIELD_READMORE_MODAL_WIDTH_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_MODAL_WIDTH_DESC"
+					default="1000"
+					/>
+
+				<field
+					showon="readmore_behaviour:2"
+					name="readmore_modal_height"
+					type="int"
+					label="MOD_ARTICLES_FAQ_FIELD_READMORE_MODAL_WIDTH_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_READMORE_MODAL_HEIGHT_DESC"
+					default="800"
+					/>
 
 				<field
 					name="readmore_text"
