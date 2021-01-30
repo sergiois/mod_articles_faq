@@ -33,6 +33,9 @@ Joomla! Articles in Bootstrap accordion format
 ### Version 1.3.1 [2020-04-16]
 * **[Added]** Open article in modal option (popup) and new window
 
+### Version 1.3.2 [2021-01-30]
+* **[Added]** Reset input for clear search
+
 * * *
 
 ## Copyright & License

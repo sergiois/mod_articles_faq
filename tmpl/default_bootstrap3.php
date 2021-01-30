@@ -45,11 +45,12 @@ if($params->get('padding_image'))
 $jinput = Factory::getApplication()->input;
 ?>
 <?php if($params->get('show_search') == true) { ?>
-    <form action="<?php echo Uri::current(); ?>" method="get">
+    <form action="<?php echo Uri::current(); ?>" method="get" id="formSearch">
         <div class="input-group">
-            <input type="text" class="form-control" name="search" placeholder="<?php echo Text::_('MOD_ARTICLES_FAQ_PLACEHOLDER_SEARCH_TEXT'); ?>">
+            <input type="text" value="<?php echo $jinput->get("search"); ?>" class="form-control" id="search" name="search" placeholder="<?php echo Text::_('MOD_ARTICLES_FAQ_PLACEHOLDER_SEARCH_TEXT'); ?>">
             <?php if($params->get('show_button_search') == true) { ?>
             <span class="input-group-btn">
+                <input class="btn btn-default" type="reset" onclick="document.getElementById('search').value = ''; document.getElementById('formSearch').submit(); return false;"/>
                 <button class="btn btn-default" type="submit"><?php echo Text::_('MOD_ARTICLES_FAQ_BUTTON_SEARCH_TEXT'); ?></button>
             </span>
             <?php } ?>
@@ -65,7 +66,7 @@ $jinput = Factory::getApplication()->input;
 	$result = false;
     if(!empty($search))
     {
-        $result = strpos($text,$search);
+        $result = strpos(strtolower($text),strtolower($search));
     }
 	if($result || empty($search)) {
     ?>
