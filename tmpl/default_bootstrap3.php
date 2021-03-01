@@ -101,36 +101,52 @@ $jinput = Factory::getApplication()->input;
                 <?php endif; ?>
 
                 <?php if($params->get('show_content') != 'offc'): ?>
-                    <?php
+                   <?php
+                    /* set output parameter to complete text */
+                    $text = $item->introtext . $item->fulltext;
+
+                    /* Strip tags if set*/
+                    if($params->get('sanitize_content')):
+                        $text = strip_tags(filter_var($text, FILTER_SANITIZE_STRING));
+                    endif; 
+                    
                     if($params->get('show_content') == 'partc'):
-                        $cleanText = filter_var($item->introtext, FILTER_SANITIZE_STRING);
-                        $introCleanText = strip_tags($cleanText);
-                        if (strlen($introCleanText) > $params->get('tam_content', 200))
-                        {
-                            $introtext = substr($introCleanText,0,strrpos(substr($introCleanText,0,$params->get('tam_content', 200))," ")).'...';
-                        }
-                        else
-                        {
-                            $introtext = $introCleanText;
-                        }
-                    elseif($params->get('show_content') == 'fullc'):
-                        $introtext = $item->fulltext;
-                    else:
-                        $introtext = $item->introtext;
+
+                        if (strlen($text) > $params->get('tam_content', 200)):
+                                  $text = substr($text,0,strrpos(substr($text,0,$params->get('tam_content', 200))," ")).'...';
+                        endif;
+
+                    elseif($params->get('show_content') == 'introc'):
+                        /* override $text with only the intro*/
+                        $text = $item->introtext;
+
+                        /* because $text has a new value we have to strip tags agian*/
+                        if($params->get('sanitize_content')):
+                            $text = strip_tags(filter_var($text, FILTER_SANITIZE_STRING));
+                        endif; 
+
                     endif;
                     ?>
-                    <p><?php echo $introtext; ?></p>
+                    <p><?php echo JHtml::_('content.prepare',$text); ?></p>
                 <?php endif; ?>
                 
                 <?php if($params->get('show_readmore')): ?>
                     <p class="text-right">
-                    <?php if($params->get('readmore_behaviour')== 0): ?>
+                    <?php if($params->get('readmore_behaviour')== 0): /*Open*/  ?>
                         <a href="<?php echo $item->link; ?>" class="btn btn-primary" ><?php echo $params->get('readmore_text') ? $params->get('readmore_text') : Text::_('MOD_ARTICLES_FAQ_FIELD_READMORE_TEXT'); ?></a>
-                    <?php elseif($params->get('readmore_behaviour')== 1): ?>
+                    <?php elseif($params->get('readmore_behaviour')== 1): /*Open in new windows*/?>
                         <a href="<?php echo $item->link; ?>" class="btn btn-primary"  target="_blank"><?php echo $params->get('readmore_text') ? $params->get('readmore_text') : Text::_('MOD_ARTICLES_FAQ_FIELD_READMORE_TEXT'); ?></a>
-                    <?php else: ?>
+                    <?php else: /*Popup box */ 
+                        /* check if there are other parameters in the url */
+                        if (strpos($item->link,'?') !==false ) {
+                            $tmplcode= '&tmpl=component';
+                        }
+                        else { 
+                            $tmplcode= '?tmpl=component';
+                        } ?>
                         <?php HTMLHelper::_('behavior.modal'); ?>
-                        <a href="<?php echo $item->link; ?>?tmpl=component" class="btn btn-primary modal" rel="{handler: 'iframe', size: {x: <?php echo $params->get('readmore_modal_width') ?>, y: <?php echo $params->get('readmore_modal_height')?>}}"><?php echo $params->get('readmore_text') ? $params->get('readmore_text') : Text::_('MOD_ARTICLES_FAQ_FIELD_READMORE_TEXT'); ?></a>
+                        
+                        <a href="<?php echo $item->link . $tmplcode; ?>" class="btn btn-primary modal" rel="{handler: 'iframe', size: {x: <?php echo $params->get('readmore_modal_width') ?>, y: <?php echo $params->get('readmore_modal_height')?>}}"><?php echo $params->get('readmore_text') ? $params->get('readmore_text') : Text::_('MOD_ARTICLES_FAQ_FIELD_READMORE_TEXT'); ?></a>
                     <?php endif; ?>
                     </p> 
                 <?php endif; ?>

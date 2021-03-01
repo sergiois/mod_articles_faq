@@ -143,6 +143,19 @@
 					<option value="fullc">MOD_ARTICLES_FAQ_OPTION_FULLC_VALUE</option>
 					<option value="partc">MOD_ARTICLES_FAQ_OPTION_PARTC_VALUE</option>
 				</field>
+				
+				<field
+					name="sanitize_content"
+					type="radio"
+					label="MOD_ARTICLES_FAQ_FIELD_SANITIZE_CONTENT_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_SANITIZE_CONTENT_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				
 				<field
 					name="tam_content"
 					type="text"
