@@ -100,7 +100,7 @@ class ArticlesFaqHelper implements DatabaseAwareInterface
         if (trim($ordering) === 'rand()') {
             $model->setState('list.ordering', $this->getDatabase()->getQuery(true)->rand());
         } else {
-            $direction = $params->get('direction', 1) ? 'DESC' : 'ASC';
+            $direction = ($params->get('direction', 'DESC') == 'DESC') ? 'DESC' : 'ASC';
             $model->setState('list.direction', $direction);
             $model->setState('list.ordering', $ordering);
         }

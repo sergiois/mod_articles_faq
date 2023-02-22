@@ -40,6 +40,9 @@ Joomla! Articles in Bootstrap accordion format
 * **[Added]** Joomla 4 compatibility
 * **[Added]** Bootstrap 5 compatibility
 
+### Version 1.4.1 [2023-02-22]
+* **[Fixed]** Order ASC and DESC
+
 * * *
 
 ## Copyright & License
