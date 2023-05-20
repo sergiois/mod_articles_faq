@@ -15,6 +15,8 @@ Joomla! Articles in Bootstrap accordion format
     * Sort articles by Pubish date, Title, Hits or Randomly.
     * Sort articles by Order of articles.
     * Open article in modal option (popup) and new window
+    * Search option
+    * Multi-column option
 
 * * *
 
@@ -42,6 +44,9 @@ Joomla! Articles in Bootstrap accordion format
 
 ### Version 1.4.1 [2023-02-22]
 * **[Fixed]** Order ASC and DESC
+
+### Version 1.4.2 [2023-05-20]
+* **[Added]** Multi-column option. Thanks to Tazzios ([Tazzios](https://github.com/Tazzios "Tazzios")) for his [Pull Request](https://github.com/sergiois/mod_articles_faq/pull/15 "Pull Request").
 
 * * *
 
