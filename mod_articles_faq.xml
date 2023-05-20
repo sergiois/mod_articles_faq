@@ -142,6 +142,29 @@
 					type="spacer"
 					hr="true"
 				/>
+				
+				<field
+					name="columns"
+					type="list"
+					label="MOD_ARTICLES_FAQ_FIELD_COLUMNS_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_COLUMNS_DESC"
+					default="1"
+					>
+					<option value="auto-fit">MOD_ARTICLES_FAQ_OPTION_AUTO_VALUE</option>
+					<option value="1">MOD_ARTICLES_FAQ_OPTION_1_VALUE</option>
+					<option value="2">MOD_ARTICLES_FAQ_OPTION_2_VALUE</option>
+					<option value="3">MOD_ARTICLES_FAQ_OPTION_3_VALUE</option>
+					<option value="4">MOD_ARTICLES_FAQ_OPTION_4_VALUE</option>
+					<option value="5">MOD_ARTICLES_FAQ_OPTION_5_VALUE</option>
+				</field>
+				
+				<field
+					name="columns_minium_width"
+					type="number"
+					label="MOD_ARTICLES_FAQ_FIELD_COLMINWIDTH_LABEL"
+					description="MOD_ARTICLES_FAQ_COLMINWIDTH_DESC"
+					default="20"
+				/>
 
 				<field
 					name="show_content"

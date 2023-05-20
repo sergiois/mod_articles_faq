@@ -31,6 +31,8 @@ if($params->get('padding_image'))
     $style .= 'padding:'.$params->get('padding_image').'; ';
 }
 
+
+
 ?>
 <?php if($params->get('show_search') == true) { ?>
     <form action="<?php echo Uri::current(); ?>" method="get" id="formSearch">
@@ -45,7 +47,8 @@ if($params->get('padding_image'))
     <hr>
 <?php } ?>
 
-<div class="accordion" id="accordion<?php echo $module->id; ?>">
+<div class="accordion" id="accordion<?php echo $module->id; ?>" style=" display: grid;grid-template-columns: repeat(<? echo $params->get('columns'); ?>, minmax(<?php echo $params->get('columns_minium_width'); ?>rem, 1fr));">
+
 <?php foreach ($items as $item) : ?>
     <?php
     $text = $item->title . ' ' . $item->introtext . ' ' .$item->fulltext;
@@ -58,7 +61,7 @@ if($params->get('padding_image'))
 	if($result !== false || empty($search))
     {
     ?>
-	<div class="accordion-item">
+	<div class="accordion-item" >
         <h4 class="accordion-header" id="heading<?php echo $item->id; ?>">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $item->id; ?>_<?php echo $module->id; ?>" aria-expanded="true" aria-controls="collapse<?php echo $item->id; ?>_<?php echo $module->id; ?>">
                 <?php echo $item->title; ?>
