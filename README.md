@@ -49,7 +49,7 @@ Joomla! Articles in Bootstrap accordion format
 * **[Added]** Multi-column option. Thanks to Tazzios ([Tazzios](https://github.com/Tazzios "Tazzios")) for his [Pull Request](https://github.com/sergiois/mod_articles_faq/pull/15 "Pull Request").
 
 ### Version 1.4.3 [2023-06-07]
-* **[Added]** Fixed several issues. Thanks to Carlos (carcam) ([Carlos](https://github.com/carcam "Carlos")) for his [Pull Request](https://github.com/sergiois/mod_articles_faq/pull/17 "Pull Request").
+* **[Fixed]** Fixed several issues. Thanks to Carlos (carcam) ([Carlos](https://github.com/carcam "Carlos")) for his [Pull Request](https://github.com/sergiois/mod_articles_faq/pull/17 "Pull Request").
 
 * * *
 
