@@ -203,6 +203,19 @@
 					<option value="intro">MOD_ARTICLES_FAQ_OPTION_INTRO_VALUE</option>
 					<option value="fulltext">MOD_ARTICLES_FAQ_OPTION_FULLTEXT_VALUE</option>
 				</field>
+				
+				<field
+					name="image"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					label="MOD_ARTICLES_FAQ_FIELD_REMOVE_CONTENT_IMAGE_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_REMOVE_CONTENT_IMAGE_DESC"
+					filter="integer"
+					default="1"
+					>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
 
 				<field
 					name="link_image"
