@@ -128,8 +128,9 @@ class ArticlesFaqHelper implements DatabaseAwareInterface
             $item->introtext = HTMLHelper::_('content.prepare', $item->introtext, '', 'mod_articles_news.content');
 
             // Remove any images belongs to the text
-            if (!$params->get('image')) {
+            if ($params->get('image')) {
                 $item->introtext = preg_replace('/<img[^>]*>/', '', $item->introtext);
+                $item->fulltext = preg_replace('/<img[^>]*>/', '', $item->fulltext);
             }
 
             // Show the Intro/Full image field of the article

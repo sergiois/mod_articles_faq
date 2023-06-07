@@ -7,7 +7,7 @@
 	<authorUrl>https://sergioiglesias.net</authorUrl>
 	<copyright>Copyright © 2023 - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
-	<version>1.4.2</version>
+	<version>1.4.3</version>
 	<description>MOD__P_JOOMLA__ARTICLES_IN_BOOTS</description>
 	<namespace path="src">Joomla\Module\ArticlesFaq</namespace>
 	<files>
@@ -202,6 +202,19 @@
 					<option value="off">MOD_ARTICLES_FAQ_OPTION_OFF_VALUE</option>
 					<option value="intro">MOD_ARTICLES_FAQ_OPTION_INTRO_VALUE</option>
 					<option value="fulltext">MOD_ARTICLES_FAQ_OPTION_FULLTEXT_VALUE</option>
+				</field>
+				
+				<field
+					name="image"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					label="MOD_ARTICLES_FAQ_FIELD_REMOVE_CONTENT_IMAGE_LABEL"
+					description="MOD_ARTICLES_FAQ_FIELD_REMOVE_CONTENT_IMAGE_DESC"
+					filter="integer"
+					default="1"
+					>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
 				</field>
 
 				<field
